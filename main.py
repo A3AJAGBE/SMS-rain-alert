@@ -1,6 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
+
 load_dotenv()
 
 OMW_KEY = os.environ.get("OMW_API_KEY")
@@ -22,7 +23,16 @@ data = response.json()
 # Get the data for the first 12 hours
 half_day_weather = data['hourly'][:12]
 
+will_rain = False
+
 # Get the condition of the next 12 hours
 for hr_condition in half_day_weather:
     half_day_condition = hr_condition['weather'][0]['id']
-    print(half_day_condition)
+
+    # Check will they will be rain
+    if int(half_day_condition) < 700:
+        will_rain = True
+
+# Provide a feedback if there's rain
+if will_rain:
+    print("Take an umbrella on your way out.")
