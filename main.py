@@ -21,5 +21,8 @@ data = response.json()
 
 # Get the data for the first 12 hours
 half_day_weather = data['hourly'][:12]
-print(half_day_weather)
 
+# Get the condition of the next 12 hours
+for hr_condition in half_day_weather:
+    half_day_condition = hr_condition['weather'][0]['id']
+    print(half_day_condition)
