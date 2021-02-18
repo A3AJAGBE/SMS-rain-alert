@@ -9,7 +9,8 @@ OMW_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall?"
 parameters = {
     "lat": os.environ.get("LAT"),
     "lon": os.environ.get("LONG"),
-    "appid": OMW_KEY
+    "appid": OMW_KEY,
+    "exclude": "current,minutely,daily"
 }
 
 response = requests.get(OMW_ENDPOINT, params=parameters)
