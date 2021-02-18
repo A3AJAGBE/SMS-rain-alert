@@ -15,5 +15,11 @@ parameters = {
 
 response = requests.get(OMW_ENDPOINT, params=parameters)
 response.raise_for_status()
+
+# Get the weather data
 data = response.json()
-print(data)
+
+# Get the data for the first 12 hours
+half_day_weather = data['hourly'][:12]
+print(half_day_weather)
+
